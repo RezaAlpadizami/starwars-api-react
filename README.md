@@ -1,3 +1,7 @@
+# StackTech in Web Starwars Api
+
+This project using framework and tools : React JS, Antd, Axios, SASS, Lotties, React-router-dom
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
