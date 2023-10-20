@@ -6,7 +6,7 @@ const { Meta } = Card;
 
 const CardItem = ({ url, name, id, type }) => {
   return (
-    <Link to={`/${type}/${id}`}>
+    <Link to={`/${type === "characters" ? "people" : type}/${id}`}>
       <Card
         hoverable
         style={{ width: 240 }}

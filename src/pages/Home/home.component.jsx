@@ -47,8 +47,6 @@ const Home = () => {
     }
   }, [inputSearch]);
 
-  console.log("data", data);
-
   useEffect(() => {
     setIsLoading(true);
     getData();
