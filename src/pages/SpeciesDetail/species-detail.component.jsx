@@ -5,17 +5,17 @@ import { useParams } from "react-router-dom";
 
 import { api } from "../../services/api";
 import CardDetail from "../../components/CardDetail/card-detail.component";
-import "./people-detail.styles.scss";
+import "./species-detail.styles.scss";
 import LoadingCustom from "../../components/LoadingCustom/loading-custom.component";
 
-const PeopleDetail = () => {
+const SpeciesDetail = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 
-  const getPeopleDetail = useCallback(async () => {
+  const getSpeciesDetail = useCallback(async () => {
     try {
-      const response = await api.get(`/people/${id}`);
+      const response = await api.get(`/species/${id}`);
       setData(response?.data);
     } catch {
     } finally {
@@ -24,8 +24,8 @@ const PeopleDetail = () => {
   }, [id]);
 
   useEffect(() => {
-    getPeopleDetail();
-  }, [getPeopleDetail]);
+    getSpeciesDetail();
+  }, [getSpeciesDetail]);
 
   return (
     <>
@@ -33,9 +33,9 @@ const PeopleDetail = () => {
         <LoadingCustom />
       ) : (
         <Flex vertical justify="center" align="center" gap={"middle"}>
-          <div className="wrapper-people">
+          <div className="wrapper">
             <img
-              src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+              src={`https://starwars-visualguide.com/assets/img/species/${id}.jpg`}
               alt={`${data?.name}`}
               width={250}
               height={300}
@@ -47,13 +47,16 @@ const PeopleDetail = () => {
               <CardDetail title={"Name"} content={data?.name} />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Gender"} content={data?.gender} />
+              <CardDetail
+                title={"Classification"}
+                content={data?.classification}
+              />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Height"} content={`${data?.height} Cm`} />
-            </Col>
-            <Col span={6}>
-              <CardDetail title={"Mass"} content={`${data?.mass} Kg`} />
+              <CardDetail
+                title={"Average Height"}
+                content={`${data?.average_height} Cm`}
+              />
             </Col>
             <Col span={6}>
               <CardDetail title={"Hair Color"} content={data?.hair_color} />
@@ -65,7 +68,13 @@ const PeopleDetail = () => {
               <CardDetail title={"Eye Color"} content={data?.eye_color} />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Birth Year"} content={data?.birth_year} />
+              <CardDetail
+                title={"Average Lifespan"}
+                content={data?.average_lifespan}
+              />
+            </Col>
+            <Col span={6}>
+              <CardDetail title={"Language"} content={data?.language} />
             </Col>
           </Row>
         </Flex>
@@ -74,4 +83,4 @@ const PeopleDetail = () => {
   );
 };
 
-export default PeopleDetail;
+export default SpeciesDetail;

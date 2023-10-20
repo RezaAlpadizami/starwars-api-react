@@ -6,13 +6,13 @@ const { Meta } = Card;
 
 const CardItem = ({ url, name, id, type }) => {
   return (
-    <Link to={`/people/${id}`}>
+    <Link to={`/${type}/${id}`}>
       <Card
         hoverable
         style={{ width: 240 }}
         cover={
           <img
-            alt="example"
+            alt={`${type}`}
             src={`https://starwars-visualguide.com/assets/img/${type}/${getUrlId(
               url
             )}.jpg`}

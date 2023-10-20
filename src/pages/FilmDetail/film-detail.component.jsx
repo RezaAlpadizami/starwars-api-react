@@ -5,18 +5,18 @@ import { useParams } from "react-router-dom";
 
 import { api } from "../../services/api";
 import CardDetail from "../../components/CardDetail/card-detail.component";
-import "./people-detail.styles.scss";
+import "./film-detail.styles.scss";
 import LoadingCustom from "../../components/LoadingCustom/loading-custom.component";
 
-const PeopleDetail = () => {
+const FilmDetail = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 
-  const getPeopleDetail = useCallback(async () => {
+  const getDetailFilm = useCallback(async () => {
     try {
-      const response = await api.get(`/people/${id}`);
-      setData(response?.data);
+      const response = await api.get(`/films/${id}`);
+      setData(response.data);
     } catch {
     } finally {
       setIsLoading(false);
@@ -24,8 +24,8 @@ const PeopleDetail = () => {
   }, [id]);
 
   useEffect(() => {
-    getPeopleDetail();
-  }, [getPeopleDetail]);
+    getDetailFilm();
+  }, [getDetailFilm]);
 
   return (
     <>
@@ -33,9 +33,9 @@ const PeopleDetail = () => {
         <LoadingCustom />
       ) : (
         <Flex vertical justify="center" align="center" gap={"middle"}>
-          <div className="wrapper-people">
+          <div className="wrapper">
             <img
-              src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+              src={`https://starwars-visualguide.com/assets/img/films/${id}.jpg`}
               alt={`${data?.name}`}
               width={250}
               height={300}
@@ -44,28 +44,19 @@ const PeopleDetail = () => {
           </div>
           <Row gutter={[32, 32]} justify={"center"}>
             <Col span={6}>
-              <CardDetail title={"Name"} content={data?.name} />
+              <CardDetail title={"Title"} content={data?.title} />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Gender"} content={data?.gender} />
+              <CardDetail title={"Release Date"} content={data?.release_date} />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Height"} content={`${data?.height} Cm`} />
+              <CardDetail title={"Director"} content={`${data?.director} Cm`} />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Mass"} content={`${data?.mass} Kg`} />
+              <CardDetail title={"Producer"} content={`${data?.producer} Kg`} />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Hair Color"} content={data?.hair_color} />
-            </Col>
-            <Col span={6}>
-              <CardDetail title={"Skin Color"} content={data?.skin_color} />
-            </Col>
-            <Col span={6}>
-              <CardDetail title={"Eye Color"} content={data?.eye_color} />
-            </Col>
-            <Col span={6}>
-              <CardDetail title={"Birth Year"} content={data?.birth_year} />
+              <CardDetail title={"Synopsis"} content={data?.opening_crawl} />
             </Col>
           </Row>
         </Flex>
@@ -74,4 +65,4 @@ const PeopleDetail = () => {
   );
 };
 
-export default PeopleDetail;
+export default FilmDetail;
