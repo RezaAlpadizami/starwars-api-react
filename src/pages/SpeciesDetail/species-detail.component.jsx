@@ -59,13 +59,13 @@ const SpeciesDetail = () => {
               />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Hair Color"} content={data?.hair_colors} />
+              <CardDetail title={"Hair Colors"} content={data?.hair_colors} />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Skin Color"} content={data?.skin_colors} />
+              <CardDetail title={"Skin Colors"} content={data?.skin_colors} />
             </Col>
             <Col span={6}>
-              <CardDetail title={"Eye Color"} content={data?.eye_colors} />
+              <CardDetail title={"Eye Colors"} content={data?.eye_colors} />
             </Col>
             <Col span={6}>
               <CardDetail
