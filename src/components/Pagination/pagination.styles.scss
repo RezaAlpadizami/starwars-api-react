@@ -1,0 +1,29 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button + button {
+        margin-left: 1rem;
+    }
+  .pagination__button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9DB2BF;
+    color: #DDE6ED;
+  
+    svg {
+      text-align: center;
+    }
+
+    &.active {
+      background-color: #DDE6ED;
+      color: #27374D;
+    }
+  }
+}

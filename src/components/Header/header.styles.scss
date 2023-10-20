@@ -1,0 +1,57 @@
+$transition-duration: 0.3s;
+
+@mixin hover-effect {
+  transition: all $transition-duration ease-in;
+  
+  &:hover {
+    color: #fcb831;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+
+  img {
+    width: 80px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: #DDE6ED;
+      @include hover-effect;
+
+      svg {
+        margin-right: 0.5rem;
+      }
+    }
+
+    a + a {
+      margin-left: 3.5rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center !important;
+
+      a + a {
+        margin-left: 0 !important;
+      }
+    }
+  }
+}

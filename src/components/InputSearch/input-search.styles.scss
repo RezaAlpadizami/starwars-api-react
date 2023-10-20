@@ -1,0 +1,21 @@
+.input {
+  width: 24rem;
+
+  .ant-input-wrapper {
+    .ant-input {
+      height: 40px;
+    }
+  }
+
+  .ant-input-group-addon {
+    .ant-btn {
+      height: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  input {
+    width: 100% !important;
+  }
+}
